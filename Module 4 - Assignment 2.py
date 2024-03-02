@@ -1,0 +1,14 @@
+#Splitting a pdf by certain pages (RANGE)
+from PyPDF2 import PdfFileReader, PdfFileWriter
+pdf_file_path = 'fifteen.pdf'
+pdf = PdfFileReader(pdf_file_path)
+pdfwriter = PdfFileWriter()
+
+for page_num in range(2,6):
+    pdfwriter.addPage(pdf.getPage(page_num))
+
+#out is a variable
+with open('NEWoutput.pdf', 'wb') as out:
+    pdfwriter.write(out)
+
+print('PDF file has been split')
